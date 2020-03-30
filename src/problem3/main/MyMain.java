@@ -1,52 +1,18 @@
-package problem3.myqueue;
+package problem3.main;
 
-import problem3.node.Node;
+import problem3.myqueue.MyPriorityQueue;
 
-public class MyPriorityQueue {
-    Node front;
+// executable class
+// use problem5.student.Student class to create object of student
+public class MyMain {
+    public static void main(String[] args) {
+        MyPriorityQueue pq = new MyPriorityQueue();
+        pq.push("a", 1);
+        pq.push("b", 2);
+        pq.push("c", 3);
 
-    public MyPriorityQueue() {
-        this.front = null;
-    }
-
-    public Node getFront() {
-        return front;
-    }
-
-    public void setFront(Node front) {
-        this.front = front;
-    }
+        pq.display();
 
 
-    public void push(String name, int roll) {
-        Node n = new Node(name, roll);
-        Node temp = front;
-        Node prev = null;
-        if (front == null)
-            front = n;
-
-        else {
-            if (front.getRoll_no() > roll) {
-                n.setNext(front);
-                front = n;
-            } else {
-                while (temp.getNext() != null && temp.getRoll_no() < roll) {
-                    //prev = temp;
-                    temp = temp.getNext();
-                }
-                //prev.setNext(n);
-                n.setNext(temp.getNext());
-                temp.setNext(n);
-
-            }
-        }
-    }
-
-    public void display() {
-        Node n = front;
-        while (n != null) {
-            System.out.println("Name --> " + n.getName() + "\nRoll no --> " + n.getRoll_no() + "\n");
-            n = n.getNext();
-        }
     }
 }
